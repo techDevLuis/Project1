@@ -60,6 +60,9 @@ function printQuote() {
   //grabs random quote and assigns to variable
 let randQuote = getRandomQuote();
 //Check to see if color is the same as existing quote on screen
+while(currentQuote === randQuote) {
+  randQuote = getRandomQuote();
+}
 if (randQuote === currentQuote) {
   randQuote = getRandomQuote()
 }
