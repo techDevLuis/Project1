@@ -11,33 +11,48 @@ project 1 - A Random Quote Generator
 const quotes = [
   {
     quote: "I am not afraid of storms, for I am learning how to sail my ship.",
-    Source: "Louisa May Alcott",
-    Citation: "Little Women - Book"
+    source: "Louisa May Alcott",
+    citation: "Little Women - Book"
   },
   {
     quote: "Darkness cannot drive out darkness; only light can do that. Hate cannot drive out hate, only love can do that.",
-    Source: "Martin Luther King Jr.",
-    Year: "Nov. 17, 1957"
+    source: "Martin Luther King Jr.",
+    year: "Nov. 17, 1957"
   },
   {
     quote: "When you give joy to other people, you get more joy in return. You should give a good thought to happiness that you can give out.",
-    Source: "Eleanor Roosevelt"
+    source: "Eleanor Roosevelt"
   },
   {
     quote: "The pessimist sees difficulty in every opportunity. The optimist sees opportunity in every difficulty.",
-    Source: "Winston Churchill"
+    source: "Winston Churchill"
   },
   {
     quote: "I’m a greater believer in luck, and I find the harder I work the more I have of it.",
-    Source: "Thomas Jefferson"
+    source: "Thomas Jefferson",
+    tag: "Favorite"
   },
 
 ]
+
+//Function for Random Color EXTRA CREDIT
+
+function randColor() {
+  let x = Math.floor(Math.random() * 256);
+  let y = Math.floor(Math.random() * 256);
+  let z = Math.floor(Math.random() * 256);
+  let bgColor = "rgb(" + x + "," + y + "," + z + ")";
+  console.log(bgColor);
+  document.body.style.backgroundColor= bgColor;
+}
+
+
+
 /***
  * getRandomQuote function
 ***/
 function getRandomQuote() {
-  let rand = Math.floor(Math.random() * 4);
+  let rand = Math.floor(Math.random() * quotes.length);
   return quotes[rand];
 }
 
@@ -47,22 +62,32 @@ function printQuote() {
 let randQuote = getRandomQuote();
 let quoteOnScreen = 
  `<p class="quote">${randQuote.quote}</p>` +
-  `<p class="source">${randQuote.Source}`;
+  `<p class="source">${randQuote.source}`;
   //used hasOwnProperty to checks for property of 'Citation'
-  if(randQuote.hasOwnProperty('Citation')){
-    quoteOnScreen += `<span class="citation"> -${randQuote.Citation}</span>`;
+  if(randQuote.hasOwnProperty('citation')){
+    quoteOnScreen += `<span class="citation"> -${randQuote.citation}</span>`;
     quoteOnScreen += "</p>";
   }
   //used hasOwnProperty to check property of Year in object
-  if(randQuote.hasOwnProperty('Year')){
-    quoteOnScreen += `<span class="year"> -${randQuote.Year}</span>`;
+  if(randQuote.hasOwnProperty('year')){
+    quoteOnScreen += `<span class="year"> -${randQuote.year}</span>`;
+    quoteOnScreen += "</p>";
+  }
+  if(randQuote.hasOwnProperty('tag')){
+    quoteOnScreen += `<span class="tag"> -${randQuote.tag}</span>`;
     quoteOnScreen += "</p>";
   }
   //inserts text on the screen from the function
   document.getElementById('quote-box').innerHTML = quoteOnScreen;
+  randColor();
 
 }
 
+//setInterval EXTRA CREDIT
+function quoteTimer() {
+  printQuote();
+}
+setInterval(quoteTimer, 10000);
 
 
 
