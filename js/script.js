@@ -36,7 +36,6 @@ const quotes = [
 ]
 
 //Function for Random Color EXTRA CREDIT
-
 function randColor() {
   let x = Math.floor(Math.random() * 256);
   let y = Math.floor(Math.random() * 256);
@@ -45,12 +44,12 @@ function randColor() {
   console.log(bgColor);
   document.body.style.backgroundColor= bgColor;
 }
-
-
-
 /***
  * getRandomQuote function
 ***/
+//create variable to hold current value of current quote
+let currentQuote = "";
+//function to generate a random quote
 function getRandomQuote() {
   let rand = Math.floor(Math.random() * quotes.length);
   return quotes[rand];
@@ -60,6 +59,14 @@ function getRandomQuote() {
 function printQuote() {
   //grabs random quote and assigns to variable
 let randQuote = getRandomQuote();
+//Check to see if color is the same as existing quote on screen
+if (randQuote === currentQuote) {
+  randQuote = getRandomQuote()
+}
+else {
+  currentQuote = randQuote
+}
+
 let quoteOnScreen = 
  `<p class="quote">${randQuote.quote}</p>` +
   `<p class="source">${randQuote.source}`;
@@ -82,7 +89,6 @@ let quoteOnScreen =
   randColor();
 
 }
-
 //setInterval EXTRA CREDIT
 function quoteTimer() {
   printQuote();
