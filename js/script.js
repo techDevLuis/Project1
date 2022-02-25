@@ -83,6 +83,7 @@ let quoteOnScreen =
     quoteOnScreen += `<span class="year"> -${randQuote.year}</span>`;
     quoteOnScreen += "</p>";
   }
+  //used hasOwnProperty to check property of tag in object
   if(randQuote.hasOwnProperty('tag')){
     quoteOnScreen += `<span class="tag"> -${randQuote.tag}</span>`;
     quoteOnScreen += "</p>";
