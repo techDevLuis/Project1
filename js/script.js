@@ -34,7 +34,7 @@ const quotes = [
 
 ]
 /***
- * `getRandomQuote` function
+ * getRandomQuote function
 ***/
 function getRandomQuote() {
   let rand = Math.floor(Math.random() * 4);
